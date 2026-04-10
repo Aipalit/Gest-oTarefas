@@ -9,39 +9,51 @@ public class Main {
         System.out.println("=== Sistema de Gestão de Tarefas (Protótipo Acadêmico) ===\n");
 
         // 1. Uso de Polimorfismo: Criamos uma lista da classe base (Tarefa)
-        // que pode armazenar qualquer subclasse (TarefaComPrazo, etc.)
         List<Tarefa> listaDeTarefas = new ArrayList<>();
 
-        // 2. Instanciando Objetos (Uso de Classes e Objetos)
+        // 2. Instanciando Objetos
         TarefaComPrazo t1 = new TarefaComPrazo(
-                "Estudar Java",
-                "Rever conceitos de Herança e Interface",
+                "Projeto em Java",
+                "Rever conceitos de Herança e Interface ",
                 LocalDate.now().plusDays(7));
 
         TarefaComPrazo t2 = new TarefaComPrazo(
                 "Projeto de Faculdade",
                 "Entregar o código fonte via AVA",
-                LocalDate.of(2023, 12, 15));
+                LocalDate.of(2026, 04, 30));
 
-        // 3. Adicionando à lista
+        TarefaComPrazo t3 = new TarefaComPrazo("Revisar Tarefa", "Revisar tarefa e Subir no ava",
+                LocalDate.of(2026, 04, 9));
+
+        // 3. Exibindo a Lista:
+        System.out.println("=== LISTA DE TAREFAS ===\n");
         listaDeTarefas.add(t1);
         listaDeTarefas.add(t2);
+        listaDeTarefas.add(t3);
 
+        System.out.println(t1);
+        System.out.println(t2);
+        System.out.println(t3);
         // 4. Aplicando Encapsulamento e Métodos
-        System.out.println("-> Alterando status da primeira tarefa...");
+        System.out.println("\n -> Alterando status da primeira tarefa...");
         t1.concluir();
 
+        System.out.println("-> Alterando status da Segunda tarefa...");
+        t2.concluir();
+
+        System.out.println("-> Alterando status da Terceira tarefa...");
+        t3.concluir();
+
         // 5. Exemplo de Sobrescrita e Polimorfismo na prática
-        System.out.println("--- Lista de Tarefas Atualizada ---");
+        System.out.println("\n--- Lista de Tarefas Atualizada ---\n");
         for (Tarefa t : listaDeTarefas) {
-            // Aqui o Java decide em tempo de execução qual toString() chamar
-            // Se for TarefaComPrazo, ele mostrará a data (Sobrescrita)
+
             System.out.println(t.toString());
         }
 
-        // 6. Demonstração de Interface (se implementou a Priorizavel)
-        System.out.println("\n--- Verificando Prioridades ---");
-        exibirPrioridade(t2); // Método auxiliar para mostrar interface
+        System.out.println("\n--- Verificando Prioridades ---\n");
+        exibirPrioridade(t2);
+        exibirPrioridade(t3);
     }
 
     // Método que aceita a Interface (Desacoplamento)
